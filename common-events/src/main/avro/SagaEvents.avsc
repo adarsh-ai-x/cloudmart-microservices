@@ -1,0 +1,44 @@
+[
+  {
+    "type": "record",
+    "name": "InventoryReservedEvent",
+    "namespace": "com.cloudmart.events",
+    "fields": [
+      { "name": "orderId", "type": "long" },
+      { "name": "productId", "type": "long" },
+      { "name": "quantity", "type": "int" },
+      { "name": "totalPrice", "type": "double" }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "InventoryFailedEvent",
+    "namespace": "com.cloudmart.events",
+    "fields": [
+      { "name": "orderId", "type": "long" },
+      { "name": "productId", "type": "long" },
+      { "name": "reason", "type": "string" }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "PaymentProcessedEvent",
+    "namespace": "com.cloudmart.events",
+    "fields": [
+      { "name": "orderId", "type": "long" },
+      { "name": "paymentId", "type": "long" },
+      { "name": "status", "type": "string" }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "PaymentFailedEvent",
+    "namespace": "com.cloudmart.events",
+    "fields": [
+      { "name": "orderId", "type": "long" },
+      { "name": "productId", "type": "long" },
+      { "name": "quantity", "type": "int" },
+      { "name": "reason", "type": "string" }
+    ]
+  }
+]

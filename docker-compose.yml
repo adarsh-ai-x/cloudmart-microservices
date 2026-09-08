@@ -1,0 +1,93 @@
+services:
+  discovery-server:
+    image: cloudmart-microservices-discovery-server
+    container_name: cloudmart-discovery-server
+    ports:
+      - "8761:8761"
+    networks:
+      - cloudmart-net
+
+  api-gateway:
+    image: cloudmart-microservices-api-gateway
+    container_name: cloudmart-api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=${ZIPKIN_ENDPOINT}
+    depends_on:
+      - discovery-server
+    networks:
+      - cloudmart-net
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: cloudmart-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - cloudmart-net
+
+  order-service:
+    image: cloudmart-microservices-order-service
+    container_name: cloudmart-order-service
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=${KAFKA_BOOTSTRAP_SERVERS}
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=${ZIPKIN_ENDPOINT}
+    depends_on:
+      - postgres
+      - discovery-server
+    networks:
+      - cloudmart-net
+
+  inventory-service:
+    image: cloudmart-microservices-inventory-service
+    container_name: cloudmart-inventory-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=${KAFKA_BOOTSTRAP_SERVERS}
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=${ZIPKIN_ENDPOINT}
+    depends_on:
+      - postgres
+      - discovery-server
+    networks:
+      - cloudmart-net
+
+  payment-service:
+    image: cloudmart-microservices-payment-service
+    container_name: cloudmart-payment-service
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=${KAFKA_BOOTSTRAP_SERVERS}
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=${ZIPKIN_ENDPOINT}
+    depends_on:
+      - postgres
+      - discovery-server
+    networks:
+      - cloudmart-net
+
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: cloudmart-zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - cloudmart-net
+
+networks:
+  cloudmart-net:
+    driver: bridge

@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "OrderCreatedEvent",
+  "namespace": "com.cloudmart.events",
+  "fields": [
+    { "name": "orderId", "type": "long" },
+    { "name": "productId", "type": "long" },
+    { "name": "username", "type": "string" },
+    { "name": "quantity", "type": "int" },
+    { "name": "totalPrice", "type": "double" },
+    { "name": "status", "type": "string" },
+    { "name": "timestamp", "type": "long" }
+  ]
+}

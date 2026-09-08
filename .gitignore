@@ -1,0 +1,20 @@
+# Secrets & Environment
+.env
+*.env.local
+
+# Compiled Java & Build outputs
+**/target/
+*.class
+*.jar
+*.war
+
+# IDE & OS files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
