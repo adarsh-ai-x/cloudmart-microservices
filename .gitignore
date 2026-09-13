@@ -1,17 +1,22 @@
-# Secrets & Environment
+# Environment & Secrets
 .env
 *.env.local
 
-# Compiled Java & Build outputs
+# Compiled Java & Maven build outputs
 **/target/
 *.class
 *.jar
 *.war
 
-# IDE & OS files
+# IDE & Tool configurations
 .idea/
 *.iml
 .vscode/
+.settings/
+.project
+.classpath
+
+# OS files
 .DS_Store
 Thumbs.db
 
