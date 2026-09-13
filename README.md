@@ -1,9 +1,3 @@
 # CloudMart Microservices Platform
 
-![](screenshots/docker-containers.png)
-
-![](screenshots/eureka-dashboard.png)
-
-![](screenshots/restfox-order-flow.png)
-
-![](screenshots/order-lifecycle-status.png)
+An event-driven distributed e-commerce architecture built with Spring Boot, Apache Kafka, and Saga Choreography.
