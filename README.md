@@ -1,16 +1,23 @@
-# CloudMart Microservices Architecture
+# CloudMart Microservices Platform
 
-An event-driven distributed e-commerce backend built with Spring Boot, Apache Kafka, and Saga Choreography.
+An event-driven distributed e-commerce architecture built with Spring Boot, Apache Kafka, and Saga Choreography.
 
-## Services Overview
-- **Discovery Server**: Netflix Eureka (Port 8761)
-- **API Gateway**: Spring Cloud Gateway (Port 8080)
-- **Order Service**: Order creation & Saga lifecycle (Port 8083)
-- **Inventory Service**: Stock reservation & rollback
-- **Payment Service**: Payment validation & failure compensation
+---
 
-## Tech Stack
-- Spring Boot, Spring Cloud
-- Apache Kafka & Zookeeper
-- PostgreSQL & MongoDB
-- Docker & Docker Compose
+## System Architecture & Live Verification
+
+### 1. Multi-Container Orchestration (Docker Desktop)
+All microservices, databases, and message brokers running in containerized environments:
+![Docker Containers](screenshots/docker-containers.png)
+
+### 2. Service Discovery (Eureka Registry)
+Core distributed services registered and verified active on Netflix Eureka Server:
+![Eureka Dashboard](screenshots/eureka-dashboard.png)
+
+### 3. API Execution & Order Creation (Restfox)
+Submitting order requests and validating asynchronous processing:
+![Restfox API](screenshots/restfox-order-flow.png)
+
+### 4. Distributed Transaction Management (Saga Pattern)
+Live database state confirming successful order flows and automated compensating transactions (Cancelled status) on limit violations:
+![Order Lifecycle](screenshots/order-lifecycle-status.png)
