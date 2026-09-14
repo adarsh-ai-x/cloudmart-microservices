@@ -1,11 +1,13 @@
-# ?? CloudMart Microservices Platform
+#   CloudMart Microservices Platform
 
-## ?? Overview
+##   Overview
 CloudMart is a distributed, event-driven e-commerce backend built with Spring Boot and Apache Kafka. The architecture uses the Saga Choreography Pattern to manage distributed data consistency across microservices with automatic compensating rollbacks.
 
 ---
 
-## ?? Features
+##    Features
+
+
 - Event-Driven Architecture: Asynchronous Kafka messaging between microservices.
 - Saga Choreography: Automated compensation rollbacks on order or payment failures.
 - Service Discovery: Dynamic routing and health registration via Netflix Eureka.
@@ -15,7 +17,9 @@ CloudMart is a distributed, event-driven e-commerce backend built with Spring Bo
 
 ---
 
-## ??? Tech Stack
+##     Tech Stack
+
+
 - Backend: Java 17, Spring Boot, Spring Cloud (Eureka, Gateway)
 - Messaging: Apache Kafka, Zookeeper
 - Databases: PostgreSQL, MongoDB
@@ -24,7 +28,9 @@ CloudMart is a distributed, event-driven e-commerce backend built with Spring Bo
 
 ---
 
-## ?? How It Works
+##    How It Works
+
+
 1. Client sends a request to create an order via API Gateway.
 2. Order Service creates the record with status PENDING and publishes an event to Kafka.
 3. Inventory Service verifies and reserves available stock.
@@ -35,8 +41,8 @@ CloudMart is a distributed, event-driven e-commerce backend built with Spring Bo
 
 ---
 
-## ?? Project Structure
-\\\	ext
+##    Project Structure
+
 cloudmart-microservices/
 +-- api-gateway/            # Port 8080
 +-- discovery-server/       # Port 8761
@@ -50,7 +56,7 @@ cloudmart-microservices/
 
 ---
 
-## ??? Verification
+##     Verification
 
 ### 1. Docker Containers
 ![](screenshots/docker-containers.png)
@@ -66,7 +72,7 @@ cloudmart-microservices/
 
 ---
 
-## ?? How to Run
+##    How to Run
 
 ### 1. Clone the Repository
 \\\ash
@@ -86,7 +92,7 @@ docker compose up -d
 
 ---
 
-## ?? Future Scope
+##    Future Scope
 - Distributed tracing using Micrometer and Zipkin
 - Circuit Breaker and Rate Limiting with Resilience4j
 - Kubernetes deployment manifests
