@@ -9,10 +9,15 @@ CloudMart is a distributed, event-driven e-commerce backend built with Spring Bo
 
 
 - Event-Driven Architecture: Asynchronous Kafka messaging between microservices.
+
 - Saga Choreography: Automated compensation rollbacks on order or payment failures.
+
 - Service Discovery: Dynamic routing and health registration via Netflix Eureka.
+  
 - Central API Gateway: Single entry point using Spring Cloud Gateway.
+  
 - Isolated Persistence: Independent databases for Order, Inventory, and Payment services.
+  
 - Multi-Container Setup: Orchestrated using Docker Compose.
 
 ---
@@ -21,9 +26,13 @@ CloudMart is a distributed, event-driven e-commerce backend built with Spring Bo
 
 
 - Backend: Java 17, Spring Boot, Spring Cloud (Eureka, Gateway)
+  
 - Messaging: Apache Kafka, Zookeeper
+  
 - Databases: PostgreSQL, MongoDB
+  
 - DevOps: Docker, Docker Compose
+  
 - API Testing: Restfox
 
 ---
@@ -69,26 +78,6 @@ cloudmart-microservices/
 
 ### 4. Saga Lifecycle (Confirmed vs Cancelled)
 ![](screenshots/order-lifecycle-status.png)
-
----
-
-##    How to Run
-
-### 1. Clone the Repository
-\\\ash
-git clone https://github.com/adarsh-ai-x/cloudmart-microservices.git
-cd cloudmart-microservices
-\\\
-
-### 2. Start the Stack
-\\\ash
-docker compose up -d
-\\\
-
-### 3. Verify Endpoints
-- Eureka Registry: http://localhost:8761
-- API Gateway: http://localhost:8080
-- Orders API: http://localhost:8083/api/orders
 
 ---
 
