@@ -54,14 +54,23 @@ CloudMart is a distributed, event-driven e-commerce backend built with Spring Bo
 
 cloudmart-microservices/
 +-- api-gateway/            # Port 8080
+
 +-- discovery-server/       # Port 8761
+
 +-- order-service/          # Port 8083
+
 +-- inventory-service/      # Port 8082
+
 +-- payment-service/        # Port 8084
+
 +-- common-events/          # Shared Kafka models
+
 +-- docker-compose.yml      # Container orchestration
+
 +-- screenshots/            # Architecture & verification proof
-\\\
+
+
+
 
 ---
 
