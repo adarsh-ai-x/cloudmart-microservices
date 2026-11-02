@@ -102,7 +102,7 @@ class OrderController {
         return saved;
     }
 
-    // Day 1-3: Saga Step 3 - Finalize Order on Payment Success
+    
     @KafkaListener(topics = "payment-processed-events", groupId = "order-finalizer-group")
     public void handlePaymentSuccess(String payload) {
         try {
@@ -118,7 +118,7 @@ class OrderController {
         }
     }
 
-    // Day 4-5: Saga Rollback - Cancel Order if Inventory or Payment Fails
+    
     @KafkaListener(topics = {"inventory-failed-events", "payment-failed-events"}, groupId = "order-cancellation-group")
     public void handleSagaFailure(String payload) {
         try {
