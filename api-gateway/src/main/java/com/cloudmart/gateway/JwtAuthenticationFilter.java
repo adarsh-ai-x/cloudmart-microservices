@@ -32,7 +32,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
             ServerHttpRequest request = exchange.getRequest();
             String path = request.getURI().getPath();
 
-            // Whitelist auth endpoints and public catalog viewing
+            
             if (path.startsWith("/api/auth") || (path.startsWith("/api/inventory/products") && request.getMethod().name().equals("GET"))) {
                 return chain.filter(exchange);
             }
@@ -54,7 +54,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
                         .parseClaimsJws(token)
                         .getBody();
 
-                // Downstream microservices ko forward karne ke liye user identity inject karein
+                
                 ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
                         .header("X-Auth-User", claims.getSubject())
                         .header("X-Auth-Role", claims.get("role", String.class))
