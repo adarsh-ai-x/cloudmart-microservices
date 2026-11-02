@@ -19,7 +19,7 @@ public class AuthController {
         String username = body.get("username");
         String password = body.get("password");
 
-        // Basic credentials check for scaffolding verification
+        
         if (username == null || password == null || !password.equals("password123")) {
             return ResponseEntity.status(401).body(Map.of("error", "Invalid credentials"));
         }
